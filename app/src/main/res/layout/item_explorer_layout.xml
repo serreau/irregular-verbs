@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginTop="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/infinitive_textview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Infinitive"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/past_textview"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:gravity="center_horizontal"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/past_textview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Past"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/infinitive_textview"
+                app:layout_constraintEnd_toStartOf="@id/past_participle_textview"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:gravity="center_horizontal"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/past_participle_textview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Participle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/past_textview"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:gravity="center_horizontal"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/translation_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Translation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/past_textview"
+                android:gravity="center_horizontal"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/button_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[scdl1]"
+                    android:background="@drawable/selector"/>
+
+                <Button
+                    android:id="@+id/button_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[scdl2]"
+                    android:background="@drawable/ripple"
+                    android:layout_margin="3dp"/>
+
+                <Button
+                    android:id="@+id/button_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[scdl3]"
+                    android:background="@drawable/ripple"
+                    android:layout_margin="3dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[scdl4]"
+                    android:background="@drawable/ripple"
+                    android:layout_margin="3dp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

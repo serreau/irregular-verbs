@@ -1,0 +1,2 @@
+rootProject.name='Irregular verbs'
+include ':app'

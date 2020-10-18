@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="sero.com.irregularverbs.ui.progression.ProgressionFragment"
+        android:label="@string/title_progression"
+        tools:layout="@layout/fragment_progression" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="sero.com.irregularverbs.ui.revision.RevisionFragment"
+        android:label="@string/title_to_study"
+        tools:layout="@layout/fragment_revision" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="sero.com.irregularverbs.ui.explorer.ExplorerFragment"
+        android:label="@string/title_explorer"
+        tools:layout="@layout/fragment_explorer" />
+</navigation>
