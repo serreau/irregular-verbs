@@ -1,14 +1,12 @@
 package sero.com.irregularverbs.ui.explorer
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_explorer_layout.view.*
-import kotlinx.android.synthetic.main.item_explorer_layout.view.button_four
-import kotlinx.android.synthetic.main.item_explorer_layout.view.button_one
-import kotlinx.android.synthetic.main.item_explorer_layout.view.button_three
-import kotlinx.android.synthetic.main.item_explorer_layout.view.button_two
 import sero.com.irregularverbs.R
 import sero.com.irregularverbs.data.db.Verbs
 import java.time.LocalDateTime
@@ -34,22 +32,11 @@ class ExplorerAdapter(
     ) : RecyclerView.ViewHolder(layout){
 
         fun  initExplorerViewHolder (verb : Verbs){
-            layout.button_one.setOnClickListener {
-                val updatedVerb = verb.copy(day = ExplorerDaySchedulerEnum.FIRST_SCHEDULER.days, date = LocalDateTime.now())
-                model.updateVerb(updatedVerb)
-            }
-            layout.button_two.setOnClickListener {
-                val updatedVerb = verb.copy(day = ExplorerDaySchedulerEnum.SECOND_SCHEDULER.days, date = LocalDateTime.now())
-                model.updateVerb(updatedVerb)
-            }
-            layout.button_three.setOnClickListener {
-                val updatedVerb = verb.copy(day = ExplorerDaySchedulerEnum.THIRD_SCHEDULER.days, date = LocalDateTime.now())
-                model.updateVerb(updatedVerb)
-            }
-            layout.button_four.setOnClickListener {
-                val updatedVerb = verb.copy(day = ExplorerDaySchedulerEnum.FOURTH_SCHEDULER.days, date = LocalDateTime.now())
-                model.updateVerb(updatedVerb)
-            }
+
+            layout.button_one.setOnClickListener { onSchedulerButtonClickListener(verb, layout.button_one) }
+            layout.button_two.setOnClickListener { onSchedulerButtonClickListener(verb, layout.button_two) }
+            layout.button_three.setOnClickListener { onSchedulerButtonClickListener(verb, layout.button_three) }
+            layout.button_four.setOnClickListener { onSchedulerButtonClickListener(verb, layout.button_four) }
 
             layout.infinitive_textview.text = verb.infinitive
             layout.past_textview.text = verb.past
@@ -60,6 +47,30 @@ class ExplorerAdapter(
             layout.button_two.text = layout.context.getString(ExplorerDaySchedulerEnum.SECOND_SCHEDULER.daySchedulerText)
             layout.button_three.text = layout.context.getString(ExplorerDaySchedulerEnum.THIRD_SCHEDULER.daySchedulerText)
             layout.button_four.text = layout.context.getString(ExplorerDaySchedulerEnum.FOURTH_SCHEDULER.daySchedulerText)
+            layout.button_one.isChecked = getStateFromVerb(verb, layout.button_one)
+            layout.button_two.isChecked = getStateFromVerb(verb, layout.button_two)
+            layout.button_three.isChecked = getStateFromVerb(verb, layout.button_three)
+            layout.button_four.isChecked = getStateFromVerb(verb, layout.button_four)
+        }
+
+        private fun onSchedulerButtonClickListener(verb: Verbs, view: CheckBox){
+            val updatedVerb = getUpdatedVerb(verb, view)
+            model.updateVerb(updatedVerb)
+            manageCheckboxes(view)
+        }
+
+        private fun getUpdatedVerb(verb: Verbs, view: CheckBox): Verbs =
+            if(view.isChecked) verb.copy(day = ExplorerDaySchedulerEnum.getSchedulerFromView(view).days, date = LocalDateTime.now())
+            else verb.copy(day = null, date = null)
+
+        private fun getStateFromVerb(verb : Verbs, view : CheckBox): Boolean =
+            ExplorerDaySchedulerEnum.getSchedulerFromView(view).days == verb.day
+
+        private fun manageCheckboxes(v : View? = null){
+            if(v != layout.button_one) layout.button_one.isChecked = false
+            if(v != layout.button_two) layout.button_two.isChecked = false
+            if(v != layout.button_three) layout.button_three.isChecked = false
+            if(v != layout.button_four) layout.button_four.isChecked = false
         }
     }
 }

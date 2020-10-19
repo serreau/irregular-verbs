@@ -55,47 +55,53 @@
                 app:layout_constraintBottom_toTopOf="@id/past_textview"
                 android:gravity="center_horizontal"/>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:gravity="center_horizontal">
-
-                <Button
+            <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/button_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:button="@null"
+                    android:background="@drawable/selector_explorer_scheduler_button__first_choice"
                     android:text="[scdl1]"
-                    android:background="@drawable/selector"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/button_two"
+                    android:gravity="center"/>
 
-                <Button
+            <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/button_two"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:button="@null"
+                    android:background="@drawable/selector_explorer_scheduler_button__second_choice"
                     android:text="[scdl2]"
-                    android:background="@drawable/ripple"
-                    android:layout_margin="3dp"/>
+                    app:layout_constraintStart_toEndOf="@id/button_one"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/button_three"
+                    android:gravity="center"/>
 
-                <Button
+            <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/button_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:button="@null"
+                    android:background="@drawable/selector_explorer_scheduler_button__third_choice"
                     android:text="[scdl3]"
-                    android:background="@drawable/ripple"
-                    android:layout_margin="3dp"/>
+                    app:layout_constraintStart_toEndOf="@id/button_two"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/button_four"
+                    android:gravity="center"/>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_four"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="[scdl4]"
-                    android:background="@drawable/ripple"
-                    android:layout_margin="3dp" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/button_four"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:button="@null"
+                android:background="@drawable/selector_explorer_scheduler_button__fourth_choice"
+                android:text="[scdl4]"
+                app:layout_constraintStart_toEndOf="@id/button_three"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
