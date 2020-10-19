@@ -55,9 +55,9 @@ class RevisionFragment : Fragment() {
 
         card.front_translation_revision_text.text = verb.frenchTranslation
         card.infinitive_revision_text.text = verb.infinitive
-        card.past_revision_text.text = verb.infinitive
-        card.past_participle_revision_text.text = verb.infinitive
-        card.back_translation_revision_text.text = verb.infinitive
+        card.past_revision_text.text = verb.past
+        card.past_participle_revision_text.text = verb.pastParticiple
+        card.back_translation_revision_text.text = verb.frenchTranslation
 
         item_revision_parent.translationX = item_revision_parent.width.toFloat()
         item_revision_parent.addView(card)

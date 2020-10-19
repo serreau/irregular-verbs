@@ -14,28 +14,42 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/infinitive_revision_text"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/item_revision_text_infinitive"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintEnd_toStartOf="@id/past_revision_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/past_revision_text"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/item_revision_text_past"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/infinitive_revision_text"/>
+            app:layout_constraintStart_toEndOf="@id/infinitive_revision_text"
+            app:layout_constraintEnd_toStartOf="@id/past_participle_revision_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/past_participle_revision_text"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/item_revision_text_past_participle"
+            app:layout_constraintStart_toEndOf="@id/past_revision_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/past_revision_text"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/back_translation_revision_text"
@@ -46,7 +60,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toTopOf="@id/infinitive_revision_text"
+            android:textSize="20sp"
+            android:textStyle="italic"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
