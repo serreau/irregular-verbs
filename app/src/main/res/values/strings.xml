@@ -17,4 +17,5 @@
     <string name="second_day_scheduler_text">3 days</string>
     <string name="third_day_scheduler_text">10 days</string>
     <string name="fourth_day_scheduler_text">20 days</string>
+    <string name="no_choice_day_scheduler_text">Not scheduled</string>
 </resources>

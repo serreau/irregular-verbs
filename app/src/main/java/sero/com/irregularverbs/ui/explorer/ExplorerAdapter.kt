@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_explorer_layout.view.*
 import sero.com.irregularverbs.R
 import sero.com.irregularverbs.data.db.Verbs
+import sero.com.irregularverbs.ui.config.DaySchedulerEnum
 import java.time.LocalDateTime
 
 class ExplorerAdapter(
@@ -43,10 +44,10 @@ class ExplorerAdapter(
             layout.past_participle_textview.text = verb.pastParticiple
             layout.translation_textview.text = verb.frenchTranslation
 
-            layout.button_one.text = layout.context.getString(ExplorerDaySchedulerEnum.FIRST_SCHEDULER.daySchedulerText)
-            layout.button_two.text = layout.context.getString(ExplorerDaySchedulerEnum.SECOND_SCHEDULER.daySchedulerText)
-            layout.button_three.text = layout.context.getString(ExplorerDaySchedulerEnum.THIRD_SCHEDULER.daySchedulerText)
-            layout.button_four.text = layout.context.getString(ExplorerDaySchedulerEnum.FOURTH_SCHEDULER.daySchedulerText)
+            layout.button_one.text = layout.context.getString(DaySchedulerEnum.FIRST_SCHEDULER.daySchedulerText)
+            layout.button_two.text = layout.context.getString(DaySchedulerEnum.SECOND_SCHEDULER.daySchedulerText)
+            layout.button_three.text = layout.context.getString(DaySchedulerEnum.THIRD_SCHEDULER.daySchedulerText)
+            layout.button_four.text = layout.context.getString(DaySchedulerEnum.FOURTH_SCHEDULER.daySchedulerText)
             layout.button_one.isChecked = getStateFromVerb(verb, layout.button_one)
             layout.button_two.isChecked = getStateFromVerb(verb, layout.button_two)
             layout.button_three.isChecked = getStateFromVerb(verb, layout.button_three)
@@ -60,11 +61,11 @@ class ExplorerAdapter(
         }
 
         private fun getUpdatedVerb(verb: Verbs, view: CheckBox): Verbs =
-            if(view.isChecked) verb.copy(day = ExplorerDaySchedulerEnum.getSchedulerFromView(view).days, date = LocalDateTime.now())
+            if(view.isChecked) verb.copy(day = DaySchedulerEnum.getSchedulerFromView(view).days, date = LocalDateTime.now())
             else verb.copy(day = null, date = null)
 
         private fun getStateFromVerb(verb : Verbs, view : CheckBox): Boolean =
-            ExplorerDaySchedulerEnum.getSchedulerFromView(view).days == verb.day
+            DaySchedulerEnum.getSchedulerFromView(view).days == verb.day
 
         private fun manageCheckboxes(v : View? = null){
             if(v != layout.button_one) layout.button_one.isChecked = false

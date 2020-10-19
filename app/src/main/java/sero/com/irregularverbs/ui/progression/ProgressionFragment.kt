@@ -1,5 +1,6 @@
 package sero.com.irregularverbs.ui.progression
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +11,10 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
-import com.github.mikephil.charting.utils.ColorTemplate
+import com.github.mikephil.charting.utils.ColorTemplate.rgb
 import kotlinx.android.synthetic.main.fragment_progression.*
 import sero.com.irregularverbs.R
+import sero.com.irregularverbs.ui.config.DaySchedulerEnum
 
 class ProgressionFragment : Fragment() {
 
@@ -21,26 +23,34 @@ class ProgressionFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(R.layout.fragment_progression, container, false)
 
+    @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         pie_chart.setUsePercentValues(true)
-        pie_chart.holeRadius = 75f
+        pie_chart.holeRadius = 60f
         pie_chart.description.isEnabled = false
-        pie_chart.dragDecelerationFrictionCoef = 0.98f
         pie_chart.setDrawEntryLabels(false)
+        pie_chart.setHoleColor(rgb(resources.getString(R.color.white)))
+        pie_chart.setTouchEnabled(false)
 
 
         val entries = ArrayList<PieEntry>()
-        entries.add(PieEntry(model.countByDay(1) / 170f, "1 jour"))
-        entries.add(PieEntry(model.countByDay(2) / 170f, "2 jours"))
-        entries.add(PieEntry(model.countByDay(3) / 170f, "3 jours"))
-        entries.add(PieEntry(model.countByDay() / 170f, "null"))
+        entries.add(PieEntry(model.countByDay(1) / 170f, getString(DaySchedulerEnum.FIRST_SCHEDULER.daySchedulerText)))
+        entries.add(PieEntry(model.countByDay(3) / 170f, getString(DaySchedulerEnum.SECOND_SCHEDULER.daySchedulerText)))
+        entries.add(PieEntry(model.countByDay(10) / 170f, getString(DaySchedulerEnum.THIRD_SCHEDULER.daySchedulerText)))
+        entries.add(PieEntry(model.countByDay(20) / 170f, getString(DaySchedulerEnum.FOURTH_SCHEDULER.daySchedulerText)))
+        entries.add(PieEntry(model.countByDay() / 170f, ""))
 
         val set = PieDataSet(entries, "")
-        set.colors = ColorTemplate.MATERIAL_COLORS.asList()
+        set.colors = listOf(
+            rgb(resources.getString(R.color.red)),
+            rgb(resources.getString(R.color.orange)),
+            rgb(resources.getString(R.color.yellow)),
+            rgb(resources.getString(R.color.green)),
+            rgb(resources.getString(R.color.white)))
         set.selectionShift = 0f
-        set.sliceSpace = 3f
+        set.setDrawValues(false)
 
         val data = PieData(set)
         data.setValueFormatter(PercentFormatter())

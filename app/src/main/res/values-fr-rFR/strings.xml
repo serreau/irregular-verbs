@@ -14,7 +14,8 @@
 
     <!-- Revision -->
     <string name="first_day_scheduler_text">1 jour</string>
-    <string name="second_day_scheduler_text">2 jours</string>
-    <string name="third_day_scheduler_text">3 jours</string>
-    <string name="fourth_day_scheduler_text">4 jours</string>
+    <string name="second_day_scheduler_text">3 jours</string>
+    <string name="third_day_scheduler_text">10 jours</string>
+    <string name="fourth_day_scheduler_text">20 jours</string>
+    <string name="no_choice_day_scheduler_text">Non programmés</string>
 </resources>
