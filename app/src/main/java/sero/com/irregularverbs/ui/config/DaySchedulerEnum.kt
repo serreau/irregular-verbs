@@ -10,28 +10,33 @@ import sero.com.irregularverbs.ui.explorer.THIRD_SCHEDULER_NUMBER_OF_DAY
 enum class DaySchedulerEnum(
     val days: Int,
     val daySchedulerText: Int,
-    val viewId: Int
+    val viewId: Int,
+    val color: Int
 ) {
     FIRST_SCHEDULER(
         FIRST_SCHEDULER_NUMBER_OF_DAY,
         R.string.first_day_scheduler_text,
-        R.id.button_one),
+        R.id.button_one,
+        R.color.red),
     SECOND_SCHEDULER(
         SECOND_SCHEDULER_NUMBER_OF_DAY,
         R.string.second_day_scheduler_text,
-        R.id.button_two
+        R.id.button_two,
+        R.color.orange
     ),
     THIRD_SCHEDULER(
         THIRD_SCHEDULER_NUMBER_OF_DAY,
         R.string.third_day_scheduler_text,
-        R.id.button_three
+        R.id.button_three,
+        R.color.yellow
     ),
     FOURTH_SCHEDULER(
         FOURTH_SCHEDULER_NUMBER_OF_DAY,
         R.string.fourth_day_scheduler_text,
-        R.id.button_four
+        R.id.button_four,
+        R.color.green
     ),
-    NO_SCHEDULER(-1, R.string.no_choice_day_scheduler_text, -1);
+    NO_SCHEDULER(-1, R.string.no_choice_day_scheduler_text, -1, R.color.white);
 
     companion object{
         fun getSchedulerFromView(view : View) =

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.progression.ProgressionFragment"
     android:background="@color/white">
 
@@ -10,5 +11,59 @@
         android:id="@+id/pie_chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/legend_first_scheduler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 jours"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/legend_second_scheduler"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/legend_second_scheduler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 jours"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/legend_first_scheduler"
+        app:layout_constraintEnd_toStartOf="@+id/legend_third_scheduler"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/legend_third_scheduler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 jours"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/legend_second_scheduler"
+        app:layout_constraintEnd_toStartOf="@+id/legend_fourth_scheduler"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/legend_fourth_scheduler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 jours"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/legend_third_scheduler"
+        app:layout_constraintEnd_toStartOf="@+id/legend_no_scheduler"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/legend_no_scheduler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 jours"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/legend_fourth_scheduler"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.github.mikephil.charting.data.PieData
@@ -23,7 +24,6 @@ class ProgressionFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(R.layout.fragment_progression, container, false)
 
-    @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -31,9 +31,9 @@ class ProgressionFragment : Fragment() {
         pie_chart.holeRadius = 60f
         pie_chart.description.isEnabled = false
         pie_chart.setDrawEntryLabels(false)
-        pie_chart.setHoleColor(rgb(resources.getString(R.color.white)))
+        pie_chart.setHoleColor(rgb(resources.getString(DaySchedulerEnum.NO_SCHEDULER.color)))
         pie_chart.setTouchEnabled(false)
-
+        pie_chart.legend.isEnabled = false
 
         val entries = ArrayList<PieEntry>()
         entries.add(PieEntry(model.countByDay(1) / 170f, getString(DaySchedulerEnum.FIRST_SCHEDULER.daySchedulerText)))
@@ -44,11 +44,11 @@ class ProgressionFragment : Fragment() {
 
         val set = PieDataSet(entries, "")
         set.colors = listOf(
-            rgb(resources.getString(R.color.red)),
-            rgb(resources.getString(R.color.orange)),
-            rgb(resources.getString(R.color.yellow)),
-            rgb(resources.getString(R.color.green)),
-            rgb(resources.getString(R.color.white)))
+            rgb(resources.getString(DaySchedulerEnum.FIRST_SCHEDULER.color)),
+            rgb(resources.getString(DaySchedulerEnum.SECOND_SCHEDULER.color)),
+            rgb(resources.getString(DaySchedulerEnum.THIRD_SCHEDULER.color)),
+            rgb(resources.getString(DaySchedulerEnum.FOURTH_SCHEDULER.color)),
+            rgb(resources.getString(DaySchedulerEnum.NO_SCHEDULER.color)))
         set.selectionShift = 0f
         set.setDrawValues(false)
 
