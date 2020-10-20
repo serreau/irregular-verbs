@@ -7,8 +7,6 @@ y
 Iapp/src/main/res/drawable/ripple_explorer_scheduler_button__no_choice.xml,4\c\4c5d2028607a900796fb01f1667bde724df5e382
 }
 Mapp/src/main/res/drawable/ripple_explorer_scheduler_button__second_choice.xml,4\c\4cee4a9085babcc8d3842ffce1bf01f798561a3a
-|
-Lapp/src/main/res/drawable/ripple_explorer_scheduler_button__third_choice.xml,7\2\72752260eb0a2a31fad14e83f3666e552874c2c1
 ~
 Napp/src/main/res/drawable/selector_explorer_scheduler_button__first_choice.xml,4\8\48cb196fc4e7ace2724b961c37f3ccb1b68c2d20
 
@@ -35,8 +33,6 @@ x
 Happ/src/main/java/sero/com/irregularverbs/ui/explorer/ExplorerAdapter.kt,0\2\02643c0fc64ebb4d1972aa5d39b64b15b7e13adb
 Y
 )app/src/main/res/layout/activity_main.xml,7\6\76b07e40f24cce093536731477540f12e7da3cb6
-`
-0app/src/main/res/layout/fragment_progression.xml,c\4\c4c1f9e9d61c8f19e485f77ab7fabc672843aaa9
 ]
 -app/src/main/res/layout/fragment_revision.xml,5\d\5d05b5eac92af60d770689bdba2a81ecf3c465d8
 S
@@ -45,3 +41,7 @@ Z
 *app/src/main/res/values-fr-rFR/strings.xml,f\4\f4cd33ccdb1f037fb686fb04461ccb9f25064daf
 
 Oapp/src/main/java/sero/com/irregularverbs/ui/progression/ProgressionFragment.kt,9\1\91db50c20c51be0f34860978a1a17d6bfde510a3
+j
+:app/src/main/java/sero/com/irregularverbs/data/db/Verbs.kt,7\8\7817275f57e892a719dec5c6dbac8f5fcff4fb89
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
