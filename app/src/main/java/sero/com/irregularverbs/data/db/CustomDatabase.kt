@@ -5,7 +5,6 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import java.time.LocalDateTime
 
 @Database(entities = [Verbs::class], version = 1)
 @TypeConverters(Converters::class)
@@ -28,16 +27,17 @@ abstract class CustomDatabase : RoomDatabase() {
                     CustomDatabase::class.java,
                     "irregular_verbs_database"
                 )
-                .allowMainThreadQueries()
-                .build()
+                    .allowMainThreadQueries()
+                    .createFromAsset("database/verbs_database")
+                    .build()
 
-                populate(INSTANCE)
+                //populate(INSTANCE)
 
                 return INSTANCE as CustomDatabase
             }
         }
 
-        private fun populate(db : CustomDatabase?){
+        /*private fun populate(db : CustomDatabase?){
             if(db == null) return
 
             db.verbsDao().insertAll(Verbs(1,"abide","abode","abode","respecter / se conformer à"))
@@ -210,6 +210,6 @@ abstract class CustomDatabase : RoomDatabase() {
             db.verbsDao().insertAll(Verbs(168,"withdraw","withdrew","withdrawn","se retirer"))
             db.verbsDao().insertAll(Verbs(169,"wring","wrung","wrung","tordre"))
             db.verbsDao().insertAll(Verbs(170,"write","wrote","written","écrire"))
-        }
+        }*/
     }
 }
