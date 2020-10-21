@@ -10,6 +10,7 @@ import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_revision.*
 import kotlinx.android.synthetic.main.item_revision_back_cardview.view.*
 import kotlinx.android.synthetic.main.item_revision_front_cardview.view.*
@@ -85,18 +86,32 @@ class RevisionFragment : Fragment() {
     }
 
     private fun onSchedulerButtonClickListener(checkbox: CheckBox, daySchedulerEnum: DaySchedulerEnum) {
-        manageCheckboxes(checkbox)
-        animateCard(-item_revision_parent.width.toFloat())
-            ?.doOnEnd {
-                item_revision_parent.removeAllViewsInLayout()
-                verb = getUpdatedVerb(checkbox, daySchedulerEnum)
-                model.updateVerb(verb)
-            }
+        if(!checkbox.isChecked)
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(resources.getString(R.string.revision_fragment_remove_scheduler_title))
+                .setMessage(resources.getString(R.string.revision_fragment_remove_scheduler_message))
+                .setNegativeButton(resources.getString(R.string.revision_fragment_remove_scheduler_cancel)) { _, _ ->
+                    checkbox.isChecked = true
+                    manageCheckboxes(checkbox)
+                }
+                .setPositiveButton(resources.getString(R.string.revision_fragment_remove_scheduler_accept)) { _, _ ->
+                    nextCard(verb.copy(day = null, date = null), checkbox)
+                }
+                .show()
+        else {
+            nextCard(verb.copy(day = daySchedulerEnum.days, date = LocalDateTime.now()), checkbox)
+        }
     }
 
-    private fun getUpdatedVerb(checkbox: CheckBox, daySchedulerEnum: DaySchedulerEnum): Verbs =
-        if(checkbox.isChecked) verb.copy(day = daySchedulerEnum.days, date = LocalDateTime.now())
-        else verb.copy(day = null, date = null)
+    private fun nextCard(verb: Verbs, checkbox: CheckBox) {
+        manageCheckboxes(checkbox)
+        val animation = animateCard(-item_revision_parent.width.toFloat())
+        animation?.doOnEnd {
+            item_revision_parent.removeAllViewsInLayout()
+            model.updateVerb(verb)
+        }
+        animation?.start()
+    }
 
     private fun manageCheckboxes(checkbox : View? = null){
         if(checkbox != card.revision_button_one) card.revision_button_one.isChecked = false

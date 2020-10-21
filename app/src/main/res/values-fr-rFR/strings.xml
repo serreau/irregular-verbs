@@ -18,4 +18,8 @@
     <string name="third_day_scheduler_text">10 jours</string>
     <string name="fourth_day_scheduler_text">20 jours</string>
     <string name="no_choice_day_scheduler_text">Non programmés</string>
+    <string name="revision_fragment_remove_scheduler_title">Ne plus apprendre ce verbe</string>
+    <string name="revision_fragment_remove_scheduler_message">Êtes-vous sûr de vouloir faire ça ?</string>
+    <string name="revision_fragment_remove_scheduler_cancel">ANNULER</string>
+    <string name="revision_fragment_remove_scheduler_accept">NE PLUS APPRENDRE</string>
 </resources>

@@ -8,9 +8,9 @@
     <!-- Revision -->
     <string name="empty_revision_message">No card to study anymore</string>
     <string name="item_revision_front_cardview_default_translation">[Translation]</string>
-    <string name="item_revision_text_infinitive">Ma reponse</string>
-    <string name="item_revision_text_past">Ma reponse</string>
-    <string name="item_revision_text_past_participle">Ma reponse</string>
+    <string name="item_revision_text_infinitive">[Infinitif]</string>
+    <string name="item_revision_text_past">[Passé]</string>
+    <string name="item_revision_text_past_participle">[Participe passé]</string>
 
     <!-- Revision -->
     <string name="first_day_scheduler_text">1 day</string>
@@ -18,4 +18,8 @@
     <string name="third_day_scheduler_text">10 days</string>
     <string name="fourth_day_scheduler_text">20 days</string>
     <string name="no_choice_day_scheduler_text">Not scheduled</string>
+    <string name="revision_fragment_remove_scheduler_title">Do not learn this verb anymore</string>
+    <string name="revision_fragment_remove_scheduler_message">Are you sure you want to du this ?</string>
+    <string name="revision_fragment_remove_scheduler_cancel">CANCEL</string>
+    <string name="revision_fragment_remove_scheduler_accept">DO NOT LEARN ANYMORE</string>
 </resources>
