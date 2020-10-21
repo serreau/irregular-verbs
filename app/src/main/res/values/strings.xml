@@ -22,4 +22,7 @@
     <string name="revision_fragment_remove_scheduler_message">Are you sure you want to du this ?</string>
     <string name="revision_fragment_remove_scheduler_cancel">CANCEL</string>
     <string name="revision_fragment_remove_scheduler_accept">DO NOT LEARN ANYMORE</string>
+
+    <!-- Progression -->
+    <string name="progression_fragment_fraction">%d / 170</string>
 </resources>

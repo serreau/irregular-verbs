@@ -8,4 +8,6 @@ class ProgressionViewModel : ViewModel() {
     fun countByDay(day: Int): Float = LocalVerbsRepository.countByDay(day).toFloat()
 
     fun countByDay(): Float = LocalVerbsRepository.countByDay().toFloat()
+
+    fun countAll(): Float = LocalVerbsRepository.countAll().toFloat()
 }

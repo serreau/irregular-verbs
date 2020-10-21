@@ -21,6 +21,9 @@ interface VerbsDao {
     @Query("SELECT COUNT(*) FROM VERBS WHERE DAY IS NULL")
     fun countByDay() : Int
 
+    @Query("SELECT COUNT(*) FROM VERBS WHERE DAY IS NOT NULL")
+    fun countAll() : Int
+
     @Update
     fun updateVerb(verb: Verbs)
 }

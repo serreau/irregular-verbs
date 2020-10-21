@@ -11,5 +11,6 @@ object LocalVerbsRepository {
     fun getVerbsToRevise() = CustomDatabase.getDatabase(context).verbsDao().getVerbsToRevise()
     fun countByDay(day : Int) = CustomDatabase.getDatabase(context).verbsDao().countByDay(day)
     fun countByDay() = CustomDatabase.getDatabase(context).verbsDao().countByDay()
+    fun countAll() = CustomDatabase.getDatabase(context).verbsDao().countAll()
     fun updateVerb(verb: Verbs) = CustomDatabase.getDatabase(context).verbsDao().updateVerb(verb)
 }

@@ -36,7 +36,6 @@ class ProgressionFragment : Fragment() {
         legend_second_scheduler.text = getString(SECOND_SCHEDULER.daySchedulerText)
         legend_third_scheduler.text = getString(THIRD_SCHEDULER.daySchedulerText)
         legend_fourth_scheduler.text = getString(FOURTH_SCHEDULER.daySchedulerText)
-        legend_no_scheduler.text = getString(NO_SCHEDULER.daySchedulerText)
     }
 
     private fun initPieChart() {
@@ -45,7 +44,7 @@ class ProgressionFragment : Fragment() {
             holeRadius = 60f
             description.isEnabled = false
             setDrawEntryLabels(false)
-            setHoleColor(rgb(resources.getString(NO_SCHEDULER.color)))
+            setHoleColor(rgb( resources.getColor(R.color.white, context.theme).toString()))
             setTouchEnabled(false)
             legend.isEnabled = false
         }
@@ -75,5 +74,7 @@ class ProgressionFragment : Fragment() {
         data.setValueTextSize(11f)
 
         pie_chart.data = data
+
+        progression_fraction.text = getString(R.string.progression_fragment_fraction, model.countAll().toInt())
     }
 }
