@@ -48,10 +48,11 @@ class ExplorerAdapter(
             layout.button_two.text = layout.context.getString(DaySchedulerEnum.SECOND_SCHEDULER.daySchedulerText)
             layout.button_three.text = layout.context.getString(DaySchedulerEnum.THIRD_SCHEDULER.daySchedulerText)
             layout.button_four.text = layout.context.getString(DaySchedulerEnum.FOURTH_SCHEDULER.daySchedulerText)
-            layout.button_one.isChecked = getStateFromVerb(verb, layout.button_one)
-            layout.button_two.isChecked = getStateFromVerb(verb, layout.button_two)
-            layout.button_three.isChecked = getStateFromVerb(verb, layout.button_three)
-            layout.button_four.isChecked = getStateFromVerb(verb, layout.button_four)
+
+            layout.button_one.isChecked = verb.day == FIRST_SCHEDULER_NUMBER_OF_DAY
+            layout.button_two.isChecked = verb.day == SECOND_SCHEDULER_NUMBER_OF_DAY
+            layout.button_three.isChecked = verb.day == THIRD_SCHEDULER_NUMBER_OF_DAY
+            layout.button_four.isChecked = verb.day == FOURTH_SCHEDULER_NUMBER_OF_DAY
         }
 
         private fun onSchedulerButtonClickListener(verb: Verbs, view: CheckBox){
@@ -63,9 +64,6 @@ class ExplorerAdapter(
         private fun getUpdatedVerb(verb: Verbs, view: CheckBox): Verbs =
             if(view.isChecked) verb.copy(day = DaySchedulerEnum.getSchedulerFromView(view).days, date = LocalDateTime.now())
             else verb.copy(day = null, date = null)
-
-        private fun getStateFromVerb(verb : Verbs, view : CheckBox): Boolean =
-            DaySchedulerEnum.getSchedulerFromView(view).days == verb.day
 
         private fun manageCheckboxes(v : View? = null){
             if(v != layout.button_one) layout.button_one.isChecked = false
