@@ -2,8 +2,8 @@
     <!-- Global -->
     <string name="app_name">Verbes irréguliers</string>
     <string name="title_progression">Progression</string>
-    <string name="title_to_study">Révisions</string>
-    <string name="title_explorer">Explorer</string>
+    <string name="title_to_study">Révision</string>
+    <string name="title_explorer">Tous les verbes</string>
 
     <!-- Revision -->
     <string name="empty_revision_message">Plus de cartes à réviser pour aujourd\'hui</string>

@@ -2,8 +2,8 @@
     <!-- Global -->
     <string name="app_name">Irregular verbs</string>
     <string name="title_progression">Progression</string>
-    <string name="title_to_study">Revisions</string>
-    <string name="title_explorer">Explorer</string>
+    <string name="title_to_study">Revision</string>
+    <string name="title_explorer">All verbs</string>
 
     <!-- Revision -->
     <string name="empty_revision_message">No card to study anymore</string>
