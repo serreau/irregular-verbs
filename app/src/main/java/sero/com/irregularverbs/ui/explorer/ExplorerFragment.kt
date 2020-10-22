@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_explorer.*
 import sero.com.irregularverbs.R
-import sero.com.irregularverbs.data.db.Verbs
 
 class ExplorerFragment : Fragment() {
 
@@ -27,9 +26,8 @@ class ExplorerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val verb : List<Verbs> =  model.getAll()
         viewManager = LinearLayoutManager(this.requireContext())
-        viewAdapter = ExplorerAdapter(verb, model)
+        viewAdapter = ExplorerAdapter(model.getAll().toMutableList(), model)
         recyclerView = recycler_view.apply {
             setHasFixedSize(true)
             layoutManager = viewManager

@@ -13,23 +13,24 @@ import sero.com.irregularverbs.ui.config.DaySchedulerEnum
 import java.time.LocalDateTime
 
 class ExplorerAdapter(
-    private val myDataset: List<Verbs>,
+    private var verbs: MutableList<Verbs>,
     private val model: ExplorerViewModel
 ) : RecyclerView.Adapter<ExplorerAdapter.ExplorerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExplorerViewHolder {
         val item = LayoutInflater.from(parent.context).inflate(R.layout.item_explorer_layout, parent, false) as CardView
-        return ExplorerViewHolder(item, model)
+        return ExplorerViewHolder(item, model, this)
     }
 
     override fun onBindViewHolder(holder: ExplorerViewHolder, position: Int) =
-        holder.initExplorerViewHolder(myDataset[position])
+        holder.initExplorerViewHolder(verbs[position])
 
-    override fun getItemCount() = myDataset.size
+    override fun getItemCount() = verbs.size
 
     class ExplorerViewHolder(
         private val layout: CardView,
-        private val model: ExplorerViewModel
+        private val model: ExplorerViewModel,
+        private val adapter: ExplorerAdapter
     ) : RecyclerView.ViewHolder(layout){
 
         fun  initExplorerViewHolder (verb : Verbs){
@@ -58,6 +59,7 @@ class ExplorerAdapter(
         private fun onSchedulerButtonClickListener(verb: Verbs, view: CheckBox){
             val updatedVerb = getUpdatedVerb(verb, view)
             model.updateVerb(updatedVerb)
+            adapter.verbs.replaceAll { if(it == verb) updatedVerb else it }
             manageCheckboxes(view)
         }
 
