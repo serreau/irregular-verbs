@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_explorer.*
@@ -26,12 +27,16 @@ class ExplorerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewManager = LinearLayoutManager(this.requireContext())
-        viewAdapter = ExplorerAdapter(model.getAll().toMutableList(), model)
-        recyclerView = recycler_view.apply {
-            setHasFixedSize(true)
-            layoutManager = viewManager
-            adapter = viewAdapter
-        }
+        model.getAll.observe(viewLifecycleOwner, Observer {
+            if(!this::viewAdapter.isInitialized){
+                viewManager = LinearLayoutManager(this.requireContext())
+                viewAdapter = ExplorerAdapter(it.toMutableList(), model)
+                recyclerView = recycler_view.apply {
+                    setHasFixedSize(true)
+                    layoutManager = viewManager
+                    adapter = viewAdapter
+                }
+            }
+        })
     }
 }

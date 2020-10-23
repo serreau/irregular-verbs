@@ -1,13 +1,12 @@
 package sero.com.irregularverbs.ui.progression
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import sero.com.irregularverbs.data.db.Verbs
 import sero.com.irregularverbs.data.repository.LocalVerbsRepository
 
 class ProgressionViewModel : ViewModel() {
 
-    fun countByDay(day: Int): Float = LocalVerbsRepository.countByDay(day).toFloat()
-
-    fun countByDay(): Float = LocalVerbsRepository.countByDay().toFloat()
-
-    fun countAll(): Float = LocalVerbsRepository.countAll().toFloat()
+    val allVerbs : LiveData<List<Verbs>> by lazy { LocalVerbsRepository.getAll() }
+    val countAll : LiveData<Int> by lazy { LocalVerbsRepository.countAll() }
 }

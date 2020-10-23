@@ -43,5 +43,15 @@ Z
 Oapp/src/main/java/sero/com/irregularverbs/ui/progression/ProgressionFragment.kt,9\1\91db50c20c51be0f34860978a1a17d6bfde510a3
 j
 :app/src/main/java/sero/com/irregularverbs/data/db/Verbs.kt,7\8\7817275f57e892a719dec5c6dbac8f5fcff4fb89
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+Ä
+Papp/src/main/java/sero/com/irregularverbs/ui/progression/ProgressionViewModel.kt,e\d\ede4b09e088c3e823490ace6749ddd194a4d4016
+m
+=app/src/main/java/sero/com/irregularverbs/data/db/VerbsDao.kt,a\0\a0354cf204b5058f02991c3461183e3a1511fa01
+z
+Japp/src/main/java/sero/com/irregularverbs/ui/explorer/ExplorerViewModel.kt,b\e\bec9e797461e8052140c4aa8e670c3674746a609
+Å
+Qapp/src/main/java/sero/com/irregularverbs/data/repository/LocalVerbsRepository.kt,1\b\1b6f5cf4b139a078e8ed494e5004ef0018bab71f
+z
+Japp/src/main/java/sero/com/irregularverbs/ui/revision/RevisionViewModel.kt,2\b\2b5eda1bf20c97fee98370f63794738985c69458

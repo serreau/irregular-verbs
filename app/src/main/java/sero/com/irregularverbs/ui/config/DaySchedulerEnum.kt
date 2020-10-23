@@ -8,9 +8,9 @@ import sero.com.irregularverbs.ui.explorer.SECOND_SCHEDULER_NUMBER_OF_DAY
 import sero.com.irregularverbs.ui.explorer.THIRD_SCHEDULER_NUMBER_OF_DAY
 
 enum class DaySchedulerEnum(
-    val days: Int,
+    val days: Int?,
     val daySchedulerText: Int,
-    val viewId: Int,
+    val viewId: Int?,
     val color: Int
 ) {
     FIRST_SCHEDULER(
@@ -36,7 +36,7 @@ enum class DaySchedulerEnum(
         R.id.button_four,
         R.color.green
     ),
-    NO_SCHEDULER(-1, R.string.no_choice_day_scheduler_text, -1, R.color.grey);
+    NO_SCHEDULER(null, R.string.no_choice_day_scheduler_text, null, R.color.grey);
 
     companion object{
         fun getSchedulerFromView(view : View) =

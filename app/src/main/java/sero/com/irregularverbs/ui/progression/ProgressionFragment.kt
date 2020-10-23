@@ -14,7 +14,6 @@ import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate.rgb
 import kotlinx.android.synthetic.main.fragment_progression.*
 import sero.com.irregularverbs.R
-import sero.com.irregularverbs.ui.config.DaySchedulerEnum
 import sero.com.irregularverbs.ui.config.DaySchedulerEnum.*
 
 class ProgressionFragment : Fragment() {
@@ -26,10 +25,8 @@ class ProgressionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initPieChart()
         initLegend()
-
     }
 
     private fun initLegend() {
@@ -40,42 +37,48 @@ class ProgressionFragment : Fragment() {
     }
 
     private fun initPieChart() {
-        with(pie_chart) {
-            setUsePercentValues(true)
-            holeRadius = 60f
-            description.isEnabled = false
-            setDrawEntryLabels(false)
-            setHoleColor(rgb( resources.getColor(R.color.white, context.theme).toString()))
-            setTouchEnabled(false)
-            legend.isEnabled = false
-        }
+        model.allVerbs.observe(viewLifecycleOwner, Observer { it ->
+            with(pie_chart) {
+                setUsePercentValues(true)
+                holeRadius = 60f
+                description.isEnabled = false
+                setDrawEntryLabels(false)
+                setHoleColor(rgb( resources.getColor(R.color.white, context.theme).toString()))
+                setTouchEnabled(false)
+                legend.isEnabled = false
+            }
+
+            val count = it.count()
+            val entries = ArrayList<PieEntry>().apply {
+                add(PieEntry(it.count { it.day == FOURTH_SCHEDULER.days }.toFloat() / count, getString(FOURTH_SCHEDULER.daySchedulerText)))
+                add(PieEntry(it.count { it.day == THIRD_SCHEDULER.days }.toFloat() / count, getString(THIRD_SCHEDULER.daySchedulerText)))
+                add(PieEntry(it.count { it.day == SECOND_SCHEDULER.days }.toFloat() / count, getString(SECOND_SCHEDULER.daySchedulerText)))
+                add(PieEntry(it.count { it.day == FIRST_SCHEDULER.days }.toFloat() / count, getString(FIRST_SCHEDULER.daySchedulerText)))
+                add(PieEntry(it.count { it.day == NO_SCHEDULER.days }.toFloat() / count, ""))
+            }
+
+            val set = PieDataSet(entries, "")
+
+            set.colors = listOf(
+                rgb(getString(FOURTH_SCHEDULER.color)),
+                rgb(getString(THIRD_SCHEDULER.color)),
+                rgb(getString(SECOND_SCHEDULER.color)),
+                rgb(getString(FIRST_SCHEDULER.color)),
+                rgb(getString(NO_SCHEDULER.color)))
+            set.selectionShift = 0f
+            set.setDrawValues(false)
+
+            val data = PieData(set)
+            data.setValueFormatter(PercentFormatter())
+            data.setValueTextSize(11f)
+
+            pie_chart.data = data
+            pie_chart.invalidate()
+        })
 
 
-        val entries = ArrayList<PieEntry>()
-        with(entries){
-            add(PieEntry(model.countByDay(20) / 170f, getString(FOURTH_SCHEDULER.daySchedulerText)))
-            add(PieEntry(model.countByDay(10) / 170f, getString(THIRD_SCHEDULER.daySchedulerText)))
-            add(PieEntry(model.countByDay(3) / 170f, getString(SECOND_SCHEDULER.daySchedulerText)))
-            add(PieEntry(model.countByDay(1) / 170f, getString(FIRST_SCHEDULER.daySchedulerText)))
-            add(PieEntry(model.countByDay() / 170f, ""))
-        }
-        val set = PieDataSet(entries, "")
-
-        set.colors = listOf(
-            rgb(getString(FOURTH_SCHEDULER.color)),
-            rgb(getString(THIRD_SCHEDULER.color)),
-            rgb(getString(SECOND_SCHEDULER.color)),
-            rgb(getString(FIRST_SCHEDULER.color)),
-            rgb(getString(NO_SCHEDULER.color)))
-        set.selectionShift = 0f
-        set.setDrawValues(false)
-
-        val data = PieData(set)
-        data.setValueFormatter(PercentFormatter())
-        data.setValueTextSize(11f)
-
-        pie_chart.data = data
-
-        progression_fraction.text = getString(R.string.progression_fragment_fraction, model.countAll().toInt())
+        model.countAll.observe(viewLifecycleOwner, Observer {
+            progression_fraction.text = getString(R.string.progression_fragment_fraction, it)
+        })
     }
 }
