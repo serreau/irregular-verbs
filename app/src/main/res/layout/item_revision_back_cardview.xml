@@ -71,18 +71,27 @@
                 android:textSize="20sp"
                 android:textStyle="italic"/>
 
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_baseline_keyboard_backspace_24"
+                app:tint="@color/light_grey"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/back_cardview_buttons_container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="40dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/revision_button_one"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:button="@null"
                 android:background="@drawable/selector_explorer_scheduler_button__first_choice"
                 android:text="[scdl1]"
@@ -94,7 +103,7 @@
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/revision_button_two"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:button="@null"
                 android:background="@drawable/selector_explorer_scheduler_button__second_choice"
                 android:text="[scdl2]"
@@ -106,7 +115,7 @@
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/revision_button_three"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:button="@null"
                 android:background="@drawable/selector_explorer_scheduler_button__third_choice"
                 android:text="[scdl3]"
@@ -118,7 +127,7 @@
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/revision_button_four"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:button="@null"
                 android:background="@drawable/selector_explorer_scheduler_button__fourth_choice"
                 android:text="[scdl4]"
