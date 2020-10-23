@@ -36,7 +36,7 @@ enum class DaySchedulerEnum(
         R.id.button_four,
         R.color.green
     ),
-    NO_SCHEDULER(null, R.string.no_choice_day_scheduler_text, null, R.color.grey);
+    NO_SCHEDULER(null, R.string.no_choice_day_scheduler_text, null, R.color.light_grey);
 
     companion object{
         fun getSchedulerFromView(view : View) =

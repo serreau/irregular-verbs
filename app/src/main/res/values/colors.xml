@@ -9,5 +9,7 @@
     <color name="yellow">#FDD835</color>
     <color name="green">#7CB342</color>
     <color name="white">#ffffff</color>
-    <color name="grey">#DCEFEFEF</color>
+    <color name="light_grey">#DCEFEFEF</color>
+    <color name="grey">#AAAAAA</color>
+    <color name="black">#000000</color>
 </resources>

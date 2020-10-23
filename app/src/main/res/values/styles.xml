@@ -3,6 +3,24 @@
     <style name="MaterialTheme" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+
+    <style name="BottomNavigationBar" parent="Widget.MaterialComponents.NavigationView">
+        <item name="itemTextColor">@color/selector_bottom_navigation_bar</item>
+        <item name="itemIconTint">@color/selector_bottom_navigation_bar</item>
+    </style>
+
+
+    <style name="CustomMaterialDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="buttonBarPositiveButtonStyle">@style/CustomMaterialDialog.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/CustomMaterialDialog.Button</item>
+        <item name="buttonBarNeutralButtonStyle">@style/CustomMaterialDialog.Button</item>
+    </style>
+
+    <style name="CustomMaterialDialog.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/black</item>
     </style>
 
 </resources>
