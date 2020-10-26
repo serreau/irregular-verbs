@@ -25,4 +25,5 @@
 
     <!-- Progression -->
     <string name="progression_fragment_fraction">%d / 170</string>
+    <string name="progression_last_level_legend_text">C\'est de l\'eau</string>
 </resources>

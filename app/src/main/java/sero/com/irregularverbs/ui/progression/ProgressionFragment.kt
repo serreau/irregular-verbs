@@ -33,7 +33,7 @@ class ProgressionFragment : Fragment() {
         legend_first_scheduler.text = getString(FIRST_SCHEDULER.daySchedulerText)
         legend_second_scheduler.text = getString(SECOND_SCHEDULER.daySchedulerText)
         legend_third_scheduler.text = getString(THIRD_SCHEDULER.daySchedulerText)
-        legend_fourth_scheduler.text = getString(FOURTH_SCHEDULER.daySchedulerText)
+        legend_fourth_scheduler.text = getString(R.string.progression_last_level_legend_text)
     }
 
     private fun initPieChart() {
