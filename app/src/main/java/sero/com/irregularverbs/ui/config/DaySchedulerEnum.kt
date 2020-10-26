@@ -34,7 +34,7 @@ enum class DaySchedulerEnum(
         FOURTH_SCHEDULER_NUMBER_OF_DAY,
         R.string.fourth_day_scheduler_text,
         R.id.button_four,
-        R.color.green
+        R.color.blue
     ),
     NO_SCHEDULER(null, R.string.no_choice_day_scheduler_text, null, R.color.light_grey);
 

@@ -59,7 +59,7 @@ class ExplorerAdapter(
         private fun onSchedulerButtonClickListener(verb: Verbs, view: CheckBox){
             val updatedVerb = getUpdatedVerb(verb, view)
             model.updateVerb(updatedVerb)
-            adapter.verbs.replaceAll { if(it == verb) updatedVerb else it }
+            adapter.verbs.replaceAll { if(it.id == verb.id) updatedVerb else it }
             manageCheckboxes(view)
         }
 

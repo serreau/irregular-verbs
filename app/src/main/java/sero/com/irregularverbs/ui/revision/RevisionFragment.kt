@@ -87,7 +87,7 @@ class RevisionFragment : Fragment() {
 
     private fun onSchedulerButtonClickListener(checkbox: CheckBox, daySchedulerEnum: DaySchedulerEnum) {
         if(!checkbox.isChecked)
-            MaterialAlertDialogBuilder(requireContext(), R.style.CustomMaterialDialog)
+            MaterialAlertDialogBuilder(requireContext())
                 .setTitle(resources.getString(R.string.revision_fragment_remove_scheduler_title))
                 .setMessage(resources.getString(R.string.revision_fragment_remove_scheduler_message))
                 .setNegativeButton(resources.getString(R.string.revision_fragment_remove_scheduler_cancel)) {dialog, which ->
