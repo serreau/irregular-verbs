@@ -4,11 +4,18 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="toolbarStyle">@style/ToolbarStyle</item>
-
+        <item name="android:buttonBarStyle">@style/test</item>
     </style>
 
     <style name="ToolbarStyle" parent="Widget.MaterialComponents.Toolbar.Primary">
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="test" parent="Widget.MaterialComponents.Light.ActionBar.Solid">
+        <item name="android:itemBackground">@color/red</item>
+        <item name="android:actionBarItemBackground">@color/red</item>
+        <item name="android:iconTint">@color/red</item>
+        <item name="android:icon">@color/red</item>
     </style>
 
 </resources>

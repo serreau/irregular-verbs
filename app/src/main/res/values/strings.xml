@@ -26,4 +26,5 @@
     <!-- Progression -->
     <string name="progression_fragment_fraction">%d / 170</string>
     <string name="progression_last_level_legend_text">It\'s water</string>
+    <string name="no_ending_revision_item_title">Revise your verbs</string>
 </resources>

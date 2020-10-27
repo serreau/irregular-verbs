@@ -12,10 +12,14 @@ interface VerbsDao {
     @Query("SELECT * FROM VERBS WHERE DATE < :date")
     fun getVerbsToRevise(date : LocalDateTime = LocalDateTime.now()): LiveData<List<Verbs>>
 
+    @Query("SELECT * FROM VERBS WHERE DAY IS NOT NULL")
+    fun getScheduledVerbs() : LiveData<List<Verbs>>
+
     @Query("SELECT COUNT(*) FROM VERBS WHERE DAY IS NOT NULL")
     fun countAll() : LiveData<Int>
 
     @Update
     suspend  fun updateVerb(verb: Verbs)
+
 }
 

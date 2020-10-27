@@ -10,6 +10,7 @@ object LocalVerbsRepository {
 
     fun getAll() : LiveData<List<Verbs>> = CustomDatabase.getDatabase(context).verbsDao().getAll()
     fun getVerbsToRevise() = CustomDatabase.getDatabase(context).verbsDao().getVerbsToRevise()
+    fun getScheduledVerbs() = CustomDatabase.getDatabase(context).verbsDao().getScheduledVerbs()
     fun countAll() = CustomDatabase.getDatabase(context).verbsDao().countAll()
     suspend fun updateVerb(verb: Verbs) = CustomDatabase.getDatabase(context).verbsDao().updateVerb(verb)
 }

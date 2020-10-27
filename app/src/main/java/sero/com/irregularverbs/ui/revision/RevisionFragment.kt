@@ -2,9 +2,7 @@ package sero.com.irregularverbs.ui.revision
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.CheckBox
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
@@ -26,28 +24,45 @@ class RevisionFragment : Fragment() {
     private lateinit var verb : Verbs
     private lateinit var card : View
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_revision, container, false)
+        return inflater.inflate(R.layout.fragment_revision, container, false).apply { setHasOptionsMenu(true) }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.top_revision_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        model.scheduledVerbs.observe(viewLifecycleOwner, Observer {
+            popRandomCard(it)
+        })
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onStart() {
         super.onStart()
         model.verbsToRevise.observe(this.viewLifecycleOwner, Observer {
-            if(it.isEmpty()) return@Observer
-
-            verb = it.random()
-            card =  layoutInflater.inflate(R.layout.item_revision_layout, item_revision_parent, false)
-            initCard()
-
-            animateCard(0f)
-
-            card.back_cardview_container.setOnClickListener {
-                animateCard(-item_revision_parent.width.toFloat())
-                    ?.doOnEnd {
-                        item_revision_parent.removeAllViewsInLayout()
-                        model.updateVerb(verb)
-                    }
-            }
+            popRandomCard(it)
         })
+    }
+
+    private fun popRandomCard(it: List<Verbs>) {
+        if (it.isEmpty()) return
+
+        verb = it.random()
+        card = layoutInflater.inflate(R.layout.item_revision_layout, item_revision_parent, false)
+        initCard()
+
+        animateCard(0f)
+
+        card.back_cardview_container.setOnClickListener {
+            animateCard(-item_revision_parent.width.toFloat())
+                ?.doOnEnd {
+                    item_revision_parent.removeAllViewsInLayout()
+                    model.updateVerb(verb)
+                }
+        }
     }
 
     private fun animateCard(target : Float): ObjectAnimator? =

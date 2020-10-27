@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/no_ending_revision_item"
+        android:icon="@drawable/ic_baseline_pool_24"
+        android:title="@string/no_ending_revision_item_title"
+        app:showAsAction="always" />
+
+</menu>
