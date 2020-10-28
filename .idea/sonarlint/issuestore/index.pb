@@ -31,10 +31,6 @@ w
 Gapp/src/main/java/sero/com/irregularverbs/ui/config/DaySchedulerEnum.kt,c\2\c2db3577ddc51ceb7697ed5518a6a1d27bf70eca
 x
 Happ/src/main/java/sero/com/irregularverbs/ui/explorer/ExplorerAdapter.kt,0\2\02643c0fc64ebb4d1972aa5d39b64b15b7e13adb
-Y
-)app/src/main/res/layout/activity_main.xml,7\6\76b07e40f24cce093536731477540f12e7da3cb6
-]
--app/src/main/res/layout/fragment_revision.xml,5\d\5d05b5eac92af60d770689bdba2a81ecf3c465d8
 S
 #app/src/main/res/values/strings.xml,d\2\d2281fbb3027de2722081a53408dd77628bf080e
 Z

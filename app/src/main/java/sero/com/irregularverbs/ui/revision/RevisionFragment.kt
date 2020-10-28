@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.CheckBox
 import androidx.core.animation.doOnEnd
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -23,6 +24,8 @@ class RevisionFragment : Fragment() {
     private val model: RevisionViewModel by viewModels()
     private lateinit var verb : Verbs
     private lateinit var card : View
+    private var noEndingModeActivated = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_revision, container, false).apply { setHasOptionsMenu(true) }
     }
@@ -33,11 +36,33 @@ class RevisionFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(noEndingModeActivated) noEndingOptionDisable(item)
+        else noEndingOptionEnable(item)
+        return super.onOptionsItemSelected(item)
+    }
 
-        model.scheduledVerbs.observe(viewLifecycleOwner, Observer {
+    private fun noEndingOptionDisable(item: MenuItem) {
+        noEndingModeActivated = !noEndingModeActivated
+        val noEndingIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_pool_24)
+        item.icon = noEndingIcon
+
+        model.scheduledVerbs.removeObservers(this.viewLifecycleOwner)
+        item_revision_parent.removeAllViewsInLayout()
+        model.verbsToRevise.observe(this.viewLifecycleOwner, Observer {
             popRandomCard(it)
         })
-        return super.onOptionsItemSelected(item)
+    }
+
+    private fun noEndingOptionEnable(item: MenuItem) {
+        noEndingModeActivated = !noEndingModeActivated
+        val noEndingIconActivated = ContextCompat.getDrawable(requireContext(), R.drawable.no_ending_icon)
+        item.icon = noEndingIconActivated
+
+        model.verbsToRevise.removeObservers(this.viewLifecycleOwner)
+        item_revision_parent.removeAllViewsInLayout()
+        model.scheduledVerbs.observe(this.viewLifecycleOwner, Observer {
+            popRandomCard(it)
+        })
     }
 
     override fun onStart() {
@@ -53,26 +78,11 @@ class RevisionFragment : Fragment() {
         verb = it.random()
         card = layoutInflater.inflate(R.layout.item_revision_layout, item_revision_parent, false)
         initCard()
-
         animateCard(0f)
-
-        card.back_cardview_container.setOnClickListener {
-            animateCard(-item_revision_parent.width.toFloat())
-                ?.doOnEnd {
-                    item_revision_parent.removeAllViewsInLayout()
-                    model.updateVerb(verb)
-                }
-        }
+        card.back_cardview_container.setOnClickListener { nextCard(verb) }
     }
 
-    private fun animateCard(target : Float): ObjectAnimator? =
-        ObjectAnimator.ofFloat(item_revision_parent, "translationX", target).apply {
-            duration = CARD_TRANSLATION_DURATION
-            start()
-        }
-
-
-    private fun initCard() : View {
+    private fun initCard() {
         card.front_translation_revision_text.text = verb.frenchTranslation
         card.infinitive_revision_text.text = verb.infinitive
         card.past_revision_text.text = verb.past
@@ -95,9 +105,8 @@ class RevisionFragment : Fragment() {
         card.revision_button_four.setOnClickListener { onSchedulerButtonClickListener(card.revision_button_four, FOURTH_SCHEDULER) }
 
         item_revision_parent.translationX = item_revision_parent.width.toFloat()
-        item_revision_parent.addView(card)
-
-        return card
+        if(item_revision_parent.childCount == 0) // TO REMOVE
+            item_revision_parent.addView(card)
     }
 
     private fun onSchedulerButtonClickListener(checkbox: CheckBox, daySchedulerEnum: DaySchedulerEnum) {
@@ -105,25 +114,17 @@ class RevisionFragment : Fragment() {
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle(resources.getString(R.string.revision_fragment_remove_scheduler_title))
                 .setMessage(resources.getString(R.string.revision_fragment_remove_scheduler_message))
-                .setNegativeButton(resources.getString(R.string.revision_fragment_remove_scheduler_cancel)) {dialog, which ->
-                    checkbox.isChecked = true
-                    manageCheckboxes(checkbox)
-                }
-                .setOnDismissListener {
-                    checkbox.isChecked = true
-                    manageCheckboxes(checkbox)
-                }
-                .setPositiveButton(resources.getString(R.string.revision_fragment_remove_scheduler_accept)) { dialog, which ->
-                    nextCard(verb.copy(day = null, date = null), checkbox)
-                }
+                .setNegativeButton(resources.getString(R.string.revision_fragment_remove_scheduler_cancel)) {_, _ -> checkbox.isChecked = true }
+                .setOnDismissListener { checkbox.isChecked = true }
+                .setPositiveButton(resources.getString(R.string.revision_fragment_remove_scheduler_accept)) { _, _ -> nextCard(verb.copy(day = null, date = null)) }
                 .show()
         else {
-            nextCard(verb.copy(day = daySchedulerEnum.days, date = LocalDateTime.now()), checkbox)
+            nextCard(verb.copy(day = daySchedulerEnum.days, date = LocalDateTime.now()))
         }
+        manageCheckboxes(checkbox)
     }
 
-    private fun nextCard(verb: Verbs, checkbox: CheckBox) {
-        manageCheckboxes(checkbox)
+    private fun nextCard(verb: Verbs) {
         val animation = animateCard(-item_revision_parent.width.toFloat())
         animation?.doOnEnd {
             item_revision_parent.removeAllViewsInLayout()
@@ -131,6 +132,12 @@ class RevisionFragment : Fragment() {
         }
         animation?.start()
     }
+
+    private fun animateCard(target : Float): ObjectAnimator? =
+        ObjectAnimator.ofFloat(item_revision_parent, "translationX", target).apply {
+            duration = CARD_TRANSLATION_DURATION
+            start()
+        }
 
     private fun manageCheckboxes(checkbox : View? = null){
         if(checkbox != card.revision_button_one) card.revision_button_one.isChecked = false
