@@ -24,7 +24,7 @@
     <string name="revision_fragment_remove_scheduler_accept">NE PLUS APPRENDRE</string>
 
     <!-- Progression -->
-    <string name="progression_fragment_fraction">%d / 170</string>
+    <string name="progression_fragment_fraction">%d / 177</string>
     <string name="progression_last_level_legend_text">C\'est de l\'eau</string>
     <string name="no_ending_revision_item_title">Révises tes verbes</string>
 </resources>
